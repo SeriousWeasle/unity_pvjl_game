@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //Other objects and attributes the script needs
     public CharacterController controller;  //Player Character controller
+    public InputHandler inputhandler;
     public Transform groundchecker; //Checker for ground intersections
     public Transform respawnPoint;
 
@@ -32,17 +33,13 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -4f;
-        }
+            }
 
-        //get walking inputs
-        float x = Input.GetAxis("Horizontal"); //Strafing
-        float z = Input.GetAxis("Vertical");   //Walking
-
-        //make vector for movement
-        movement = Vector3.ClampMagnitude(transform.right * x + transform.forward * z, 1f); //multiply forward and right vector by movement directions and clamp at 1 unit length
+        //get walking movement
+        movement = inputhandler.walkDirection();
 
         //check for running
-        if (Input.GetButton("Run"))
+        if (inputhandler.isRunning())
         {
             movement *= runmult; //if running; multiply the movement vector with the run multiplier
         }
@@ -51,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(movement * speed * Time.deltaTime); //move controller with set speed along movement axis, accounting for framerate
 
         //check if player can jump and is jumping
-        if (isGrounded && Input.GetButton("Jump"))
+        if (isGrounded && inputhandler.isJumping())
         {
             velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity); //Apply upward force for jump
         }

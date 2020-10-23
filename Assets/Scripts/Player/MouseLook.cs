@@ -20,7 +20,6 @@ public class MouseLook : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime * sensitivityFactor; //get smoothed x axis and factor in sensitivity and dt
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime * sensitivityFactor; //get smoothed y axis and factor in sensitivity and dt
-
         //calculate y rotation
         verticalRotation -= mouseY;
         //prevent head from rotating too far up and/or down
