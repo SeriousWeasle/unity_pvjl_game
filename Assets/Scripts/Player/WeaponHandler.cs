@@ -9,8 +9,12 @@ public class WeaponHandler : MonoBehaviour
     public GameObject weapon;
     public Transform projectileSpawn;
     public GameObject projectile;
+    public Transform head;
 
     bool weaponActive = true;
+
+    public float firedelay = 0.5f;
+    float firetimer = 0f;
 
     // Update is called once per frame
     void Update()
@@ -26,9 +30,17 @@ public class WeaponHandler : MonoBehaviour
             weapon.SetActive(true);
         }
 
-        if (inputhandler.isAttacking() && weaponActive)
+        if (inputhandler.isAttacking() && weaponActive && firetimer <= 0)
         {
-            Instantiate(projectile).transform.position = projectileSpawn.position;
+            GameObject bullet = Instantiate(projectile);
+            bullet.transform.position = projectileSpawn.position;
+            bullet.transform.rotation = head.rotation;
+            firetimer = firedelay;
+        }
+
+        if (firetimer > 0)
+        {
+            firetimer -= Time.deltaTime;
         }
     }
 }

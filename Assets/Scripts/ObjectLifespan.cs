@@ -10,7 +10,7 @@ public class ObjectLifespan : MonoBehaviour
         lifetime += Time.deltaTime;
         if (lifetime >= lifespan)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
