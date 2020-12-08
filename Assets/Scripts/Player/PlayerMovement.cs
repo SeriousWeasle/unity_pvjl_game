@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -4f;
-            }
+        }
 
         //get walking movement
         movement = inputhandler.walkDirection();
@@ -55,12 +55,14 @@ public class PlayerMovement : MonoBehaviour
 
         //calculate downward velocity
         velocity.y += gravity * Time.deltaTime * -1f;
+
         controller.Move(velocity * Time.deltaTime);
 
         //check if player is out of bounds vertically
         if(groundchecker.transform.position.y < verticalOOB)
         {
             gameObject.transform.position = respawnPoint.position;
+            velocity = new Vector3(0, 0, 0);
         }
     }
 }

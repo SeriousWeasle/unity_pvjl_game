@@ -42,9 +42,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7529412, g: 0.67058825, b: 0, a: 1}
   m_Intensity: 1
-  m_Range: 2
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7469540392096283819}
   m_Layer: 0
   m_Name: TestObject
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,8 +187,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!54 &3835697898925386725
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b8197c8d6ddfd45a8b8d91530b8835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1000
+  force: 5000
+  particleOffset: 1
+  damage: 2
   rb: {fileID: 3835697898925386725}
   effect: {fileID: 3305183696959819885, guid: b2978f9629017634b94c31e2b3dd624a, type: 3}
