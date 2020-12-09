@@ -35,4 +35,10 @@ public class InputHandler : MonoBehaviour
         //get scrollwheel input
         return Input.GetAxis("Mouse ScrollWheel");
     }
+
+    public bool isUsing()
+    {
+        //get if use button is pressed
+        return Input.GetButton("Use");
+    }
 }
